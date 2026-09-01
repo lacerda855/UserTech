@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UserTechEvolution — Sites, Plataformas & IA de Alta Performance</title>
+<meta name="description" content="UserTechEvolution desenvolve sites, sistemas, automações e soluções de Inteligência Artificial sob medida para escalar o seu negócio. Projetos a partir de R$ 1.000.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- ===== BARRA DE PROGRESSO DE ROLAGEM ===== -->
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- ===== BACKGROUND: grid + rede de partículas cobrindo TODO o site ===== -->
+<div class="bg-grid" aria-hidden="true"></div>
+<canvas id="neuralCanvas" class="bg-canvas" aria-hidden="true"></canvas>
+<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+<!-- ===== HEADER ===== -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#home" class="logo" id="logoLink" aria-label="UserTechEvolution — voltar ao início">
+      <span class="logo__mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" width="34" height="34" class="logo-svg">
+          <defs>
+            <linearGradient id="logoGradCore" x1="0" y1="0" x2="40" y2="40">
+              <stop offset="0" stop-color="#00E5FF"/>
+              <stop offset="1" stop-color="#8B5CF6"/>
+            </linearGradient>
+            <radialGradient id="logoGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#00E5FF" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#00E5FF" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <circle class="logo-ring" cx="20" cy="20" r="16" fill="none" stroke="url(#logoGradCore)" stroke-width="1" stroke-dasharray="2 4"/>
+
+          <line class="logo-line" x1="20" y1="20" x2="20" y2="6" stroke="#3E7BFA" stroke-width="1"/>
+          <line class="logo-line" x1="20" y1="20" x2="31.8" y2="27" stroke="#8B5CF6" stroke-width="1"/>
+          <line class="logo-line" x1="20" y1="20" x2="8.2" y2="27" stroke="#00E5FF" stroke-width="1"/>
+
+          <circle cx="20" cy="20" r="10" fill="url(#logoGlow)" class="logo-glow"/>
+          <circle class="logo-core" cx="20" cy="20" r="4.4" fill="url(#logoGradCore)"/>
+
+          <circle class="logo-node" cx="20" cy="6" r="2.6" fill="#3E7BFA"/>
+          <circle class="logo-node" cx="31.8" cy="27" r="2.6" fill="#8B5CF6"/>
+          <circle class="logo-node" cx="8.2" cy="27" r="2.6" fill="#00E5FF"/>
+
+          <circle class="logo-pulse" r="1.3" fill="#fff">
+            <animateMotion dur="2.2s" repeatCount="indefinite" path="M20,20 L20,6"/>
+          </circle>
+          <circle class="logo-pulse" r="1.3" fill="#fff">
+            <animateMotion dur="2.2s" repeatCount="indefinite" begin="0.7s" path="M20,20 L31.8,27"/>
+          </circle>
+          <circle class="logo-pulse" r="1.3" fill="#fff">
+            <animateMotion dur="2.2s" repeatCount="indefinite" begin="1.4s" path="M20,20 L8.2,27"/>
+          </circle>
+        </svg>
+      </span>
+      <span class="logo__text">Us&r<span class="logo__accent">T&ch</span>&volution<span class="logo__cursor">_</span></span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Navegação principal">
+      <ul class="nav__list" id="navList">
+        <span class="nav__indicator" id="navIndicator" aria-hidden="true"></span>
+        <li><a href="#home" class="nav__link">Hom&</a></li>
+        <li><a href="#servicos" class="nav__link">S&rviços</a></li>
+        <li><a href="#projetos" class="nav__link">Proj&tos</a></li>
+        <li><a href="#planos" class="nav__link">Planos</a></li>
+        <li><a href="#sobre" class="nav__link">Sobr&</a></li>
+        <li><a href="#contato" class="nav__link">Contato</a></li>
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      <a href="#contato" class="btn btn--primary btn--sm">Fale Conosco</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero__glow hero__glow--1" aria-hidden="true"></div>
+    <div class="hero__glow hero__glow--2" aria-hidden="true"></div>
+
+    <div class="container hero__content">
+      <p class="eyebrow reveal"><span class="eyebrow__dot"></span> TECNOLOGIA · VELOCIDADE · IMPACTO REAL</p>
+      <h1 class="hero__title reveal">
+        O site do seu negócio pronto em <span class="text-gradient">tempo recorde</span>.<br>
+        Tecnologia de ponta por um <span class="text-gradient">preço justo</span>.
+      </h1>
+      <p class="hero__subtitle reveal">
+        Projetos de alta performance a partir de <strong>R$ 1.000</strong>. Eliminamos a burocracia para entregar sites rápidos, seguros e otimizados para converter visitantes em clientes.
+      </p>
+      <div class="hero__actions reveal">
+        <a href="#contato" class="btn btn--primary btn--glow">
+          Solicitar Orçamento
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#servicos" class="btn btn--ghost">Conhecer Serviços</a>
+      </div>
+
+      <div class="hero__terminal reveal" aria-hidden="true">
+        <span class="hero__terminal-dot"></span>
+        <span class="hero__terminal-prompt">utd@core:~$</span>
+        <span class="hero__terminal-text" id="typedText"></span><span class="hero__terminal-cursor">|</span>
+      </div>
+    </div>
+
+    <div class="scroll-cue" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- ===== DEMONSTRAÇÃO INTERATIVA ===== -->
+  <section class="demo" id="demo">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow reveal"><span class="eyebrow__dot"></span> VEJA NA PRÁTICA</p>
+        <h2 class="section-title reveal">Isto é <span class="text-gradient">interatividade real</span>, não um print, <span class="text-gradient">Tenha a experiencia, imagine </span>seu site online hoje.</h2>
+        
+      </header>
+
+      <div class="browser-mock reveal">
+        <div class="browser-mock__bar">
+          <span class="browser-mock__dot browser-mock__dot--red"></span>
+          <span class="browser-mock__dot browser-mock__dot--yellow"></span>
+          <span class="browser-mock__dot browser-mock__dot--green"></span>
+          <span class="browser-mock__url">🔒 suaempresa.com.br</span>
+        </div>
+
+        <div class="browser-mock__screen">
+          <canvas class="demo-canvas" id="demoCanvas" aria-hidden="true"></canvas>
+
+          <div class="demo-content">
+            <span class="demo-badge">EXEMPLO — <Suaempresa class="com br">SuaEmpresa.com.br</Suaempresa></span>
+            <h3 class="demo-headline"><span id="demoTyped"></span><span class="demo-cursor">|</span></h3>
+            <p class="text-gradient">Landing page criada pela UserTechEvolution para converter visitantes em clientes.</p>
+
+            <button type="button" class="btn btn--primary btn--glow demo-cta" id="demoCta">
+              Testar este botão
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <span class="demo-tooltip" id="demoTooltip">É assim que seus clientes vão clicar 👋</span>
+
+            <div class="demo-stats">
+              <div class="demo-stat"><span class="demo-stat__number" data-target="98">0</span><span class="demo-stat__label">Performance</span></div>
+              <div class="demo-stat"><span class="demo-stat__number" data-target="100">0</span><span class="demo-stat__label">Responsivo</span></div>
+              <div class="demo-stat"><span class="demo-stat__number" data-target="3">0</span><span class="demo-stat__label">Seg. de carregamento</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+    </div>
+  </section>
+
+  <!-- ===== SERVIÇOS ===== -->
+  <section class="services" id="servicos">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow reveal"><span class="eyebrow__dot"></span> NOSSOS PILARES & SERVIÇOS</p>
+        <h2 class="section-title reveal">Construído para gerar <span class="text-gradient">resultados</span></h2>
+        <p class="section-desc reveal">Cada pilar resolve uma dor específica do seu negócio — e juntos, formam um ecossistema tecnológico completo.</p>
+      </header>
+
+      <div class="services__grid">
+        <article class="service-card tilt reveal">
+          <div class="service-card__glow"></div>
+          <div class="service-card__icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M8 21h8M12 18v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M6.5 10.5l2 2-2 2M12 14.5h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="service-card__title">Desenvolvimento Web & Sistemas Sob Medida</h3>
+          <p class="service-card__desc">Sites, plataformas, dashboards e aplicativos mobile construídos do zero, com arquitetura escalável e foco em performance.</p>
+          <ul class="service-card__list">
+            <li>Sites institucionais e e-commerces de alta performance</li>
+            <li>Sistemas web sob medida (SaaS, ERPs, portais)</li>
+            <li>Aplicativos mobile nativos e híbridos</li>
+          </ul>
+          <a href="#contato" class="service-card__link">Solicitar este serviço →</a>
+        </article>
+
+        <article class="service-card tilt reveal">
+          <div class="service-card__glow"></div>
+          <div class="service-card__icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="service-card__title">Automação de Processos Empresariais</h3>
+          <p class="service-card__desc">Eliminamos tarefas manuais repetitivas com fluxos automatizados que conectam suas ferramentas e times.</p>
+          <ul class="service-card__list">
+            <li>Automação de rotinas administrativas e financeiras</li>
+            <li>Integração entre sistemas (APIs, RPA, webhooks)</li>
+            <li>Fluxos de aprovação e notificação inteligentes</li>
+          </ul>
+          <a href="#contato" class="service-card__link">Solicitar este serviço →</a>
+        </article>
+
+        <article class="service-card tilt reveal">
+          <div class="service-card__glow"></div>
+          <div class="service-card__icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9l4.2-1.4L12 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M19 15l.7 1.8L21.5 17l-1.8.7L19 19.5l-.7-1.8L16.5 17l1.8-.2L19 15z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="service-card__title">Integração e Soluções com Inteligência Artificial</h3>
+          <p class="service-card__desc">Aplicamos IA generativa e modelos preditivos para gerar decisões, atendimento e conteúdo em escala.</p>
+          <ul class="service-card__list">
+            <li>Chatbots e assistentes com IA para atendimento</li>
+            <li>Integração com LLMs (OpenAI, Claude, Gemini)</li>
+            <li>Análise preditiva e automação de decisões</li>
+          </ul>
+          <a href="#contato" class="service-card__link">Solicitar este serviço →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AUTOMAÇÕES COM IA ===== -->
+  <section class="ai-automation" id="automacoes-ia">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow reveal"><span class="eyebrow__dot"></span> AUTOMAÇÕES COM IA</p>
+        <h2 class="section-title reveal">IA aplicada ao seu processo, não como <span class="text-gradient">modismo</span></h2>
+        <p class="section-desc reveal">Passe o mouse (ou toque) em cada card para ver como a automação funciona na prática.</p>
+      </header>
+
+      <div class="ai-grid">
+        <div class="ai-flip reveal">
+          <div class="ai-flip__inner">
+            <div class="ai-flip__front">
+              <div class="ai-flip__icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9l4.2-1.4L12 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              </div>
+              <h3>Atendimento Inteligente 24/7</h3>
+              <p>Chatbots com LLM que entendem contexto, qualificam leads e escalam casos complexos.</p>
+              <span class="ai-flip__hint">Como funciona →</span>
+            </div>
+            <div class="ai-flip__back">
+              <h4>Como funciona</h4>
+              <ul>
+                <li>Modelo de IA treinado com sua base de conhecimento</li>
+                <li>Integração direta com WhatsApp, site e CRM</li>
+                <li>Escalonamento automático para humanos quando necessário</li>
+              </ul>
+              <a href="#contato" class="ai-flip__cta">Quero isso →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ai-flip reveal">
+          <div class="ai-flip__inner">
+            <div class="ai-flip__front">
+              <div class="ai-flip__icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v4H4zM4 10h10v4H4zM4 16h13v4H4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              </div>
+              <h3>Automação de Documentos & Dados</h3>
+              <p>Extração e processamento de notas, contratos e planilhas sem digitação manual.</p>
+              <span class="ai-flip__hint">Como funciona →</span>
+            </div>
+            <div class="ai-flip__back">
+              <h4>Como funciona</h4>
+              <ul>
+                <li>IA lê e classifica documentos automaticamente</li>
+                <li>Dados extraídos são validados e enviados ao seu sistema</li>
+                <li>Elimina retrabalho e erros de digitação</li>
+              </ul>
+              <a href="#contato" class="ai-flip__cta">Quero isso →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ai-flip reveal">
+          <div class="ai-flip__inner">
+            <div class="ai-flip__front">
+              <div class="ai-flip__icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 20V10M11 20V4M18 20v-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <h3>Análise Preditiva & Relatórios</h3>
+              <p>Modelos que preveem demanda, churn e prioridades, com dashboards automáticos.</p>
+              <span class="ai-flip__hint">Como funciona →</span>
+            </div>
+            <div class="ai-flip__back">
+              <h4>Como funciona</h4>
+              <ul>
+                <li>Modelos de ML treinados com o histórico do seu negócio</li>
+                <li>Dashboards atualizados automaticamente</li>
+                <li>Alertas proativos antes do problema acontecer</li>
+              </ul>
+              <a href="#contato" class="ai-flip__cta">Quero isso →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ai-flip reveal">
+          <div class="ai-flip__inner">
+            <div class="ai-flip__front">
+              <div class="ai-flip__icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <h3>Geração de Conteúdo & Copy</h3>
+              <p>IA aplicada à criação de textos, respostas e materiais em escala, com revisão humana.</p>
+              <span class="ai-flip__hint">Como funciona →</span>
+            </div>
+            <div class="ai-flip__back">
+              <h4>Como funciona</h4>
+              <ul>
+                <li>Modelos ajustados ao tom de voz da sua marca</li>
+                <li>Geração em lote com fluxo de revisão</li>
+                <li>Integrado ao seu CMS ou ferramenta de marketing</li>
+              </ul>
+              <a href="#contato" class="ai-flip__cta">Quero isso →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TECNOLOGIAS ===== -->
+  <section class="tech-stack" id="tecnologias">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow reveal"><span class="eyebrow__dot"></span> STACK TÉCNICA</p>
+        <h2 class="section-title reveal">Tecnologias que usamos</h2>
+        <p class="section-desc reveal">Ferramentas modernas, testadas em produção, escolhidas para cada tipo de projeto.</p>
+      </header>
+    </div>
+
+    <div class="marquee reveal">
+      <div class="marquee__track">
+        <span class="tech-pill">React</span><span class="tech-pill">Next.js</span><span class="tech-pill">TypeScript</span>
+        <span class="tech-pill">Node.js</span><span class="tech-pill">Vue.js</span><span class="tech-pill">React Native</span>
+        <span class="tech-pill">Tailwind CSS</span><span class="tech-pill">Python</span><span class="tech-pill">Django</span>
+        <span class="tech-pill">React</span><span class="tech-pill">Next.js</span><span class="tech-pill">TypeScript</span>
+        <span class="tech-pill">Node.js</span><span class="tech-pill">Vue.js</span><span class="tech-pill">React Native</span>
+        <span class="tech-pill">Tailwind CSS</span><span class="tech-pill">Python</span><span class="tech-pill">Django</span>
+      </div>
+    </div>
+
+    <div class="marquee marquee--reverse reveal">
+      <div class="marquee__track">
+        <span class="tech-pill">PostgreSQL</span><span class="tech-pill">OpenAI</span><span class="tech-pill">Claude API</span>
+        <span class="tech-pill">LangChain</span><span class="tech-pill">Vector DB</span><span class="tech-pill">AWS</span>
+        <span class="tech-pill">Docker</span><span class="tech-pill">Firebase</span><span class="tech-pill">GitHub Actions</span>
+        <span class="tech-pill">PostgreSQL</span><span class="tech-pill">OpenAI</span><span class="tech-pill">Claude API</span>
+        <span class="tech-pill">LangChain</span><span class="tech-pill">Vector DB</span><span class="tech-pill">AWS</span>
+        <span class="tech-pill">Docker</span><span class="tech-pill">Firebase</span><span class="tech-pill">GitHub Actions</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LINHA DE PROCESSOS ===== -->
+  <section class="process" id="processo">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow reveal"><span class="eyebrow__dot"></span> COMO TRABALHAMOS</p>
+        <h2 class="section-title reveal">Da ideia à operação em produção</h2>
+        <p class="section-desc reveal">Um processo enxuto, transparente e com entregas incrementais — você acompanha cada etapa.</p>
+      </header>
+
+      <ol class="process__timeline">
+        <li class="process__step reveal">
+          <span class="process__number">01</span>
+          <h3>Diagnóstico</h3>
+          <p>Entendemos seu processo atual, gargalos e objetivos de negócio.</p>
+        </li>
+        <li class="process__step reveal">
+          <span class="process__number">02</span>
+          <h3>Planejamento</h3>
+          <p>Desenhamos a arquitetura da solução e definimos escopo, prazos e prioridades.</p>
+        </li>
+        <li class="process__step reveal">
+          <span class="process__number">03</span>
+          <h3>Desenvolvimento</h3>
+          <p>Construção ágil, com sprints curtos e comunicação constante com o cliente.</p>
+        </li>
+        <li class="process__step reveal">
+          <span class="process__number">04</span>
+          <h3>Testes & QA</h3>
+          <p>Validamos performance, segurança e usabilidade antes de ir para produção.</p>
+        </li>
+        <li class="process__step reveal">
+          <span class="process__number">05</span>
+          <h3>Entrega & Deploy</h3>
+          <p>Colocamos a solução em produção com acompanhamento próximo do time.</p>
+        </li>
+        <li class="process__step reveal">
+          <span class="process__number">06</span>
+          <h3>Suporte Contínuo</h3>
+          <p>Monitoramento, melhorias e evolução constante do que foi entregue.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== DIFERENCIAIS / IMPACTO / SOBRE ===== -->
+  <section class="impact" id="sobre">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow reveal"><span class="eyebrow__dot"></span> DIFERENCIAIS & IMPACTO</p>
+        <h2 class="section-title reveal">Resultado medido, não prometido.</h2>
+      </header>
+
+      <div class="impact__grid">
+        <div class="stat reveal">
+          <span class="stat__number" data-target="120" data-suffix="+">0</span>
+          <span class="stat__label">Processos Automatizados</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__number" data-target="45" data-suffix="+">0</span>
+          <span class="stat__label">Sistemas Entregues</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__number" data-target="87" data-suffix="%">0</span>
+          <span class="stat__label">Eficiência Gerada</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__number" data-target="30" data-suffix="+">0</span>
+          <span class="stat__label">Empresas Atendidas</span>
+        </div>
+      </div>
+
+      <div class="about reveal">
+        <div class="about__text">
+          <p class="eyebrow"><span class="eyebrow__dot"></span> SOBRE A USERTECHEVOLUTION</p>
+          <h3>Quem somos</h3>
+          <p>
+            A UserTechEvolution nasceu para derrubar a barreira que impede pequenas e médias empresas de terem
+            uma presença digital de verdade: preço alto e prazos infinitos. Trabalhamos com um processo
+            enxuto — sem intermediários, sem burocracia — para entregar sites, sistemas e automações que
+            realmente colocam sua empresa para vender mais.
+          </p>
+          <p>
+            À medida que o seu negócio cresce, crescemos junto: dos projetos institucionais mais simples
+            até sistemas complexos com integrações de Inteligência Artificial para grandes operações,
+            mantemos o mesmo padrão de qualidade, transparência e velocidade de entrega.
+          </p>
+        </div>
+        <ul class="about__list">
+          <li><span class="about__list-icon">◆</span> Entrega ágil, sem enrolação</li>
+          <li><span class="about__list-icon">◆</span> Preço justo do pequeno ao grande porte</li>
+          <li><span class="about__list-icon">◆</span> Tecnologia moderna, segura e escalável</li>
+          <li><span class="about__list-icon">◆</span> Suporte próximo, direto com quem desenvolve</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== MODAL DE PROJETO ===== -->
+  <div class="modal" id="projectModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button type="button" class="modal__close" data-close-modal aria-label="Fechar detalhes do projeto">✕</button>
+      <div class="modal__media">
+        <img id="modalImage" src="" alt="">
+      </div>
+      <div class="modal__body">
+        <span class="project-card__cat" id="modalCategory"></span>
+        <h3 id="modalTitle"></h3>
+        <div class="modal__grid">
+          <div>
+            <h4>Desafio</h4>
+            <p id="modalChallenge"></p>
+          </div>
+          <div>
+            <h4>Solução</h4>
+            <p id="modalSolution"></p>
+          </div>
+        </div>
+        <div class="modal__result" id="modalResult"></div>
+        <div class="tags" id="modalTags"></div>
+        <a href="#contato" class="btn btn--primary btn--glow" data-close-modal>Quero um projeto assim →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PLANOS ===== -->
+  <section class="pricing" id="planos">
+    <div class="container">
+      <header class="section-head section-head--center">
+        <p class="eyebrow reveal"><span class="eyebrow__dot"></span> PLANOS & VALORES</p>
+        <h2 class="section-title reveal">Escolha o modelo ideal para a <span class="text-gradient">sua empresa</span></h2>
+        <p class="section-desc reveal">Projetos únicos, sem mensalidade obrigatória. Preço justo do pequeno ao grande porte — a partir de <strong>R$ 1.000</strong>.</p>
+
+        <div class="pricing__toggle reveal">
+          <span class="pricing__toggle-label is-active" data-period-label="cash">À vista</span>
+          <button type="button" class="switch" id="pricingSwitch" role="switch" aria-checked="false" aria-label="Alternar entre pagamento à vista e parcelado">
+            <span class="switch__thumb"></span>
+          </button>
+          <span class="pricing__toggle-label" data-period-label="installment">Parcelado <span class="pricing__badge">em até 3x sem juros</span></span>
+        </div>
+      </header>
+
+      <div class="pricing__grid">
+        <!-- Start -->
+        <article class="price-card reveal">
+          <h3 class="price-card__name">Start</h3>
+          <p class="price-card__desc">Ideal para quem busca presença digital rápida e profissional.</p>
+          <div class="price-card__value">
+            <span class="price-card__currency">R$</span>
+            <span class="price-card__amount" data-cash="1.000" data-installment="333">1.000</span>
+            <span class="price-card__period">à vista</span>
+          </div>
+          <ul class="price-card__features">
+            <li>Site institucional / Landing Page</li>
+            <li>Design 100% Responsivo</li>
+            <li>Botão direto para WhatsApp</li>
+            <li>Otimização básica de SEO</li>
+          </ul>
+          <button type="button" class="btn btn--ghost btn--block js-select-plan" data-plan="Start">Iniciar Projeto Start</button>
+        </article>
+
+        <!-- Growth -->
+        <article class="price-card price-card--featured reveal">
+          <span class="price-card__tag">Mais popular</span>
+          <h3 class="price-card__name">Growth</h3>
+          <p class="price-card__desc">Focado em geração de leads, integrações e escala de vendas.</p>
+          <div class="price-card__value">
+            <span class="price-card__currency">R$</span>
+            <span class="price-card__amount" data-cash="2.500" data-installment="833">2.500</span>
+            <span class="price-card__period">à vista</span>
+          </div>
+          <ul class="price-card__features">
+            <li>Múltiplas páginas customizadas</li>
+            <li>Integração com CRM e E-mail Marketing</li>
+            <li>Pixel de Ads e métricas avançadas</li>
+            <li>Velocidade de carregamento otimizada</li>
+          </ul>
+          <button type="button" class="btn btn--primary btn--glow btn--block js-select-plan" data-plan="Growth">Iniciar Projeto Growth</button>
+        </article>
+
+        <!-- Enterprise -->
+        <article class="price-card reveal">
+          <h3 class="price-card__name">Enterprise</h3>
+          <p class="price-card__desc">Sistemas complexos, automações e projetos sob medida.</p>
+          <div class="price-card__value">
+            <span class="price-card__amount price-card__amount--custom">Sob Consulta</span>
+          </div>
+          <ul class="price-card__features">
+            <li>Arquitetura exclusiva e customizada</li>
+            <li>Integrações com APIs e IA</li>
+            <li>Segurança avançada (LGPD)</li>
+            <li>SLA de suporte e manutenção dedicada</li>
+          </ul>
+          <button type="button" class="btn btn--ghost btn--block js-select-plan" data-plan="Enterprise">Falar com Consultor</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTATO ===== -->
+  <section class="contact" id="contato">
+    <div class="container contact__inner">
+      <div class="contact__info reveal">
+        <p class="eyebrow"><span class="eyebrow__dot"></span> CONTATO</p>
+        <h2 class="section-title">Vamos automatizar e escalar o seu negócio?</h2>
+        <p class="section-desc">Conte um pouco sobre o seu projeto e nosso time retorna com uma proposta técnica em até 24h úteis.</p>
+
+        <div class="contact__channels">
+          <a href="https://wa.me/5561999091241" target="_blank" rel="noopener" class="channel">
+            <span class="channel__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.6.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5 0-.1-.6-1.5-.8-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.5 1.1 2.7c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.5-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15 3.6 13.5 3.6 12c0-4.6 3.8-8.4 8.4-8.4s8.4 3.8 8.4 8.4-3.8 8.4-8.4 8.4z"/></svg>
+            </span>
+            <span>WhatsApp</span>
+          </a>
+          <a href="mailto:contato@usertechevolution.com" class="channel">
+            <span class="channel__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 6l9 7 9-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span>contato@usertechevolution.com</span>
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="channel">
+            <span class="channel__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.9 3.9 6 2.5 6S0 4.9 0 3.5 1.1 1 2.5 1s2.48 1.1 2.48 2.5zM.24 8.25h4.5V23H.24V8.25zM8.5 8.25h4.3v2h.06c.6-1.1 2.1-2.3 4.3-2.3 4.6 0 5.4 3 5.4 6.9V23h-4.5v-6.5c0-1.6 0-3.6-2.2-3.6s-2.5 1.7-2.5 3.5V23H8.5V8.25z"/></svg>
+            </span>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="channel">
+            <span class="channel__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+            </span>
+            <span>Instagram</span>
+          </a>
+        </div>
+      </div>
+
+      <form class="contact__form reveal" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" placeholder="Seu nome completo" required>
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="voce@empresa.com" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="company">Empresa</label>
+            <input type="text" id="company" name="company" placeholder="Nome da empresa">
+          </div>
+          <div class="form-group">
+            <label for="service">Serviço de interesse</label>
+            <select id="service" name="service">
+              <option value="web">Desenvolvimento Web & Sistemas</option>
+              <option value="automation">Automação de Processos</option>
+              <option value="ai">Soluções com IA</option>
+              <option value="other">Ainda não sei / Quero orientação</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Mensagem</label>
+          <textarea id="message" name="message" rows="4" placeholder="Conte um pouco sobre o desafio ou projeto..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary btn--glow btn--block">
+          Enviar mensagem
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+      <div class="confetti-container" id="confettiContainer" aria-hidden="true"></div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="logo__text">User<span class="logo__accent">Tech</span>Evolution</span>
+      <p>Software, automação e inteligência artificial para negócios que querem escalar.</p>
+    </div>
+
+    <div class="footer__col">
+      <h4>Navegação</h4>
+      <a href="#home">Home</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#planos">Planos</a>
+      <a href="#sobre">Sobre</a>
+    </div>
+
+    <div class="footer__col">
+      <h4>Serviços</h4>
+      <a href="#servicos">Desenvolvimento Web</a>
+      <a href="#servicos">Automação de Processos</a>
+      <a href="#servicos">Soluções com IA</a>
+    </div>
+
+    <div class="footer__col">
+      <h4>Contato</h4>
+      <a href="mailto:contato@usertechevolution.com">contato@usertechevolution.com</a>
+      <a href="https://wa.me/5561999091241" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <p>© <span id="year"></span> UserTechEvolution. Todos os direitos reservados.</p>
+      <p class="footer__signature">Desenvolvido com <span class="text-gradient">&lt;/&gt;</span> pela UserTechEvolution</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
